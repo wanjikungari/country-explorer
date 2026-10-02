@@ -1,0 +1,23 @@
+Country Explorer CLI - Project Planning
+Step 2 - API Exploration
+API Used:
+Countries.dev API
+https://countries.dev/countries
+1. Top-level response:
+The API returns a list of country records. Each record is stored as a dictionary containing information about one country.
+2. Available fields:
+The country records contain fields such as:
+- Name
+- Capital city
+- Region
+- Population
+- Area
+- Languages
+3. Nested fields:
+There are fields that have nested data. The languages field has a list of dictionaries in which each dictionary has information about a language.
+4. Missing or empty fields:
+Information may be missing in some country records. The program does this safely through dictionary .get() methods to avoid errors.
+Step 3 - Project Plan
+Country Explorer will be a Python command-line program which will fetch live country data using countries.dev API. The program enables the user to search a country by name and access valuable information such as the country name, capital city, region, population, area and languages.
+The app will involve individual functions to retrieve API data, process country-related information, search records, and show the results. It will deal with the mistakes like the inability to connect with the API, empty user input, invalid menu options, and searches when no country matches.
+The project illustrates Python proficiencies such as API requests, JSON processing, functions, user interaction, and error handling.
