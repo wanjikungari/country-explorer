@@ -39,7 +39,14 @@ def search_country(countries, search_term):
             return process_country(country)
 
     return None
-
+def display_country(country):
+    print("\n COUNTRY INFORMATION ")
+    print(f"Name: {country['name']}")
+    print(f"Capital: {country['capital']}")
+    print(f"Region: {country['region']}")
+    print(f"Population: {country['population']:,}")
+    print(f"Area: {country['area']:,} km²")
+    print(f"Languages: {country['languages']}")
 def main():
     countries = fetch_countries()
 
@@ -64,8 +71,7 @@ def main():
             result = search_country(countries, name)
 
             if result:
-                print("\nCountry information:")
-                print(result)
+                display_country(result)
             else:
                 print("Country not found.")
 
