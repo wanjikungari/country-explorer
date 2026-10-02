@@ -15,12 +15,33 @@ def fetch_countries():
         return None
 
 
+def process_country(country):
+    languages = country.get("languages", [])
+
+    language_names = []
+
+    for language in languages:
+        language_names.append(language.get("name", "Unknown"))
+
+    return {
+        "name": country.get("name", "Unknown"),
+        "capital": country.get("capital", "Unknown"),
+        "region": country.get("region", "Unknown"),
+        "population": country.get("population", "Unknown"),
+        "area": country.get("area", "Unknown"),
+        "languages": ", ".join(language_names)
+    }
+
+
 def main():
     countries = fetch_countries()
 
     if countries:
-        print("Country data loaded successfully!")
-        print(f"Number of records received: {len(countries)}")
+        first_country = process_country(countries[0])
+
+        print("Processed country information:")
+        print(first_country)
+
     else:
         print("No country data was loaded.")
 
