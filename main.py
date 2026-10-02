@@ -31,19 +31,50 @@ def process_country(country):
         "area": country.get("area", "Unknown"),
         "languages": ", ".join(language_names)
     }
+def search_country(countries, search_term):
+    search_term = search_term.lower()
 
+    for country in countries:
+        if country.get("name", "").lower() == search_term:
+            return process_country(country)
+
+    return None
 
 def main():
     countries = fetch_countries()
 
-    if countries:
-        first_country = process_country(countries[0])
-
-        print("Processed country information:")
-        print(first_country)
-
-    else:
+    if not countries:
         print("No country data was loaded.")
+        return
+
+    while True:
+        print("\n COUNTRY EXPLORER ")
+        print("1. Search for a country")
+        print("2. Exit")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            name = input("Enter country name: ")
+
+            if not name:
+                print("Please enter a country name.")
+                continue
+
+            result = search_country(countries, name)
+
+            if result:
+                print("\nCountry information:")
+                print(result)
+            else:
+                print("Country not found.")
+
+        elif choice == "2":
+            print("Goodbye!")
+            break
+
+        else:
+            print("Invalid choice. Please select 1 or 2.")
 
 
 if __name__ == "__main__":
